@@ -4,7 +4,8 @@ import Card from '../components/Card'
 import NavBar from '../components/NavBar';
 import Data from "../db.json";
 
-const ProductGrid = () => {
+const ProductGrid = ({email}) => {
+
   return (
     <>
     <NavBar />
@@ -13,7 +14,7 @@ const ProductGrid = () => {
             <Grid container justifyContent="center" alignContent="center" >
               {
                 Data.products.map(obj => 
-                  <Card img={obj.image} title={obj.title} rating={obj.rating} price={obj.price} />
+                  <Card id={obj.id} img={obj.image} title={obj.title} rating={obj.rating} price={obj.amount} email={email} />
                 )
               }
             </Grid>

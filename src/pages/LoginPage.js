@@ -56,7 +56,7 @@ const LoginPage = () => {
 
         : 
 
-        <ProductGrid />
+        <ProductGrid email={email} />
       }    
     
     
