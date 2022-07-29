@@ -9,15 +9,20 @@ import { useEffect, useState } from "react";
 
 function App() {
 
+  const [loggedInEmail, setLoggedInEmail] = useState("")
+
+  // console.log(loggedInEmail)
+
   // const [loginFlag, setLoginFlag] = useState(false);
   return (
     <>
+    <NavBar email={loggedInEmail} />
     <BrowserRouter>
         <Routes>
             {/* <Route path='/favourite' element={<FavouritesPage />} /> */}
-            <Route path='/login' element={<LoginPage />} />
-            <Route index path='/' element={<SigninPage />} />
-            {/* <Route path='/checkout' element={<CheckoutPage />} /> */}
+            <Route path='/login' element={<LoginPage loggedEmail={loggedInEmail} setLoggedEmail={setLoggedInEmail} />} />
+            <Route index path='/' element={<SigninPage  />} />
+            {/* <Route path='/checkout' element={<CheckoutPage email={loggedInEmail} />} /> */}
             {/* <Route path='/allproducts' element={<ProductGrid />} /> */}
         </Routes>
     </BrowserRouter>

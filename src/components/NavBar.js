@@ -5,7 +5,7 @@ import { MdFavorite } from "react-icons/md"
 import { FaUserAlt } from "react-icons/fa"
 
 
-const NavBar = () => {
+const NavBar = ({email}) => {
   return (
     <div className='nav-container'>
         <div className='nav-left'><a className='nav-links' href='/'>Home</a></div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "../styles/forms.css"
 import ProductGrid from './ProductGrid'
 
-const LoginPage = () => {
+const LoginPage = ({loggedEmail, setLoggedEmail}) => {
 
   // useEffect(()=> {
   //   setLoggedStatus(false)
@@ -23,10 +23,14 @@ const LoginPage = () => {
       alert("Fields cannot be empty!");
       return;
     }
+    else if(email !== mail && password !== pass ){
+      alert("Invalid Creds / User Doesn't Exist")
+    }
     else{
       if(mail === email && pass === password){
         // turn of the login flag
-        alert("Voila")
+        alert("Voila Logged In!")
+        setLoggedEmail(mail)
         setLoggedStatus(true)
         // localStorage.setItem("log_status", true);
       }

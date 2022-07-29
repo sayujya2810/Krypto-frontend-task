@@ -1,15 +1,30 @@
 import { Grid } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '../components/Card'
 import NavBar from '../components/NavBar';
 import Data from "../db.json";
+import CheckoutPage from './CheckoutPage';
 
 const ProductGrid = ({email}) => {
 
+  const [cartToggle, setCartToggle] = useState(false)
+
+  const toggle = () => {
+    if(cartToggle){
+      setCartToggle(false)
+    }
+    else{
+      setCartToggle(true)
+    }
+  }
+
   return (
     <>
-    <NavBar />
+    {/* <NavBar email={email} /> */}
     <div style={{marginTop:"1rem"}}>
+      <div>
+        <button onClick={toggle}>Show CART</button>
+      </div>
           <Grid item xs={12}>
             <Grid container justifyContent="center" alignContent="center" >
               {
@@ -19,6 +34,9 @@ const ProductGrid = ({email}) => {
               }
             </Grid>
           </Grid>
+          {
+            cartToggle ? <CheckoutPage email={email} toggleCart={cartToggle} setToggleCart={setCartToggle} /> : console.log("")
+          }
     </div>
     </>
   )

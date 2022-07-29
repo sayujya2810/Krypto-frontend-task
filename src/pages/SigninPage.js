@@ -29,6 +29,7 @@ const handleSumbit = (e) => {
     }
     else{
       localStorage.setItem(email, JSON.stringify({fname, lname, email, password, favorites, orders}))
+      alert("Added Successfully! Now log in...")
     }
 
 

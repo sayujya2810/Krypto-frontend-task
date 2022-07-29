@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdOutlineAddShoppingCart } from "react-icons/md"
 import { FcLike } from "react-icons/fc"
 import { AiFillStar } from "react-icons/ai"
 import "../styles/Card.css"
 
 const Card = (props) => {
+
   
-  const arr = JSON.parse(localStorage.getItem(props.email)).orders
+  
+  // const [orders, setOrders] = useState([])
+  const [total, setTotal] = useState(0)
   const addToCart = () => {
-    
-    
-    // console.log(JSON.parse(localStorage.getItem(props.email)).orders)
+    var items = JSON.parse(localStorage.getItem(`${props.email}_cart`)) || [];
+    items.push({id: props.id , title: props.title, price : props.price })
+    localStorage.setItem(`${props.email}_cart` , JSON.stringify(items))
   }
+
 
   return (
     <div className='card-wrapper' id={props.id}>
@@ -19,7 +23,7 @@ const Card = (props) => {
         <div>
             <p>{props.title}</p>
             <div  className='price-rating'>
-                <p>₹ {props.price}</p>
+                <p>₹{props.price}</p>
                 <p>{props.rating} <AiFillStar style={{color:"yellow"}} /></p>
             </div>
         </div>
