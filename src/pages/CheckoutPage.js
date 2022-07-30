@@ -1,11 +1,15 @@
 import React from 'react'
 import "../styles/CheckoutPage.css"
 import Data from "../db.json"
+import { MdDelete } from "react-icons/md"
+import { areOptionsEqual } from '@mui/base'
 
 const CheckoutPage = ({ email ,toggleCart, setToggleCart}) => {
   
   let cart = []
+  let favs = []
   cart.push(JSON.parse(localStorage.getItem(`${email}_cart`))) 
+  favs.push(JSON.parse(localStorage.getItem(`${email}_favs`))) 
   console.log("cart : " ,cart)
 
   var total = 0;
@@ -23,6 +27,18 @@ const CheckoutPage = ({ email ,toggleCart, setToggleCart}) => {
 
 // console.log(filteredCart)
 
+const deleteFromCart = (id) => {
+  // cart.map(item => (
+  //           item.map(prod => {
+  //             if(prod.id === id){
+  //               // alert(`${prod.id} , ${id}`)
+  //               Array.remove()
+  //             }
+  //           }
+  //         )
+  // ))
+}
+
 
   const toggle = () => {
     if(toggleCart){
@@ -37,7 +53,7 @@ const CheckoutPage = ({ email ,toggleCart, setToggleCart}) => {
       <div className='toggle-div'><button id='toggle-btn' onClick={toggle}>Close CART</button></div>
       <table className='cart-table'>
         <tr className='head-row'>
-          <td className='cell' className='cell'>ID</td>
+          <td className='cell'>ID</td>
           <td className='cell'>TITLE</td>
           <td className='cell'>PRICE</td>
         </tr>
@@ -45,7 +61,7 @@ const CheckoutPage = ({ email ,toggleCart, setToggleCart}) => {
           cart.map(item => (
             item.map(prod => (
               <tr>
-                <td className='cell'>{prod.id}</td>
+                <td className='cell'><button id={prod.id} onClick={() => deleteFromCart(prod.id)} className='del-btn'><MdDelete /></button>{prod.id}</td>
                 <td className='cell'>{prod.title}</td>
                 <td className='cell'>{prod.price}</td>
 

@@ -22,3 +22,8 @@
     color: black;
     padding: .25rem;
 }
+
+.del-btn{
+    background-color: white;
+    border: none;
+}

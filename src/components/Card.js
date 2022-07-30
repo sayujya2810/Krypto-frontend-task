@@ -15,6 +15,11 @@ const Card = (props) => {
     items.push({id: props.id , title: props.title, price : props.price })
     localStorage.setItem(`${props.email}_cart` , JSON.stringify(items))
   }
+  const addToFavs = () => {
+    var items = JSON.parse(localStorage.getItem(`${props.email}_favs`)) || [];
+    items.push({id: props.id , title: props.title, price : props.price })
+    localStorage.setItem(`${props.email}_favs` , JSON.stringify(items))
+  }
 
 
   return (
@@ -29,7 +34,7 @@ const Card = (props) => {
         </div>
         <div className='add-fav'>
             <div><button className='addToCart-btn' onClick={addToCart} ><MdOutlineAddShoppingCart /></button></div>
-            <div><button className='fav-btn'><FcLike /></button></div>
+            <div><button className='fav-btn' onClick={addToFavs}><FcLike /></button></div>
         </div>
     </div>
   )
